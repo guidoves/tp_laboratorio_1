@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1472342942 source:/home/guido/workspaceC/TP_1_Cascara/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+
+1472340870 /home/guido/workspaceC/TP_1_Cascara/funciones.h
+

@@ -17,40 +17,28 @@
 int main()
 {
     char seguir='s';
-    int opcion=0;
-    int numero1=0;
-    int numero2=0;
+    float numero1=0;
+    float numero2=0;
     printf("Bienvenido!\n");
 
     while(seguir=='s')
     {
-        printf("1- Ingresar 1er operando (A=%d)\n",numero1);
-        printf("2- Ingresar 2do operando (B=%d)\n",numero2);
-        printf("3- Calcular la suma (A+B)\n");
-        printf("4- Calcular la resta (A-B)\n");
-        printf("5- Calcular la division (A/B)\n");
-        printf("6- Calcular la multiplicacion (A*B)\n");
-        printf("7- Calcular el factorial (A!)\n");
-        printf("8- Calcular todas las operaciones\n");
-        printf("9- Salir\n");
-        printf("Opcion: ");
-        scanf("%d",&opcion);
 
-        switch(opcion)
+        switch(menu())
         {
             case 1:
             printf("Ingrese el 1er operando: ");
-            scanf("%d",&numero1);
+            scanf("%f",&numero1);
 
                 break;
 
             case 2:
             printf("Ingrese el 2do operando: ");
-            scanf("%d",&numero2);
+            scanf("%f",&numero2);
 
                 break;
             case 3:
-            printf("Resultado: %d\n",sumarNumeros(numero1,numero2));
+            printf("Resultado: %f\n",sumarNumeros(numero1,numero2));
 
                 break;
 
@@ -60,12 +48,12 @@ int main()
                 break;
 
             case 5:
-            printf("Resultado: %f\n",dividirNumeros((float)numero1,numero2));
+            printf("Resultado: %f\n",dividirNumeros(numero1,numero2));
 
                 break;
 
             case 6:
-            printf("Resultado: %d\n",multiplicarNumeros(numero1,numero2));
+            printf("Resultado: %f\n",multiplicarNumeros(numero1,numero2));
 
                 break;
 
@@ -78,17 +66,17 @@ int main()
 
                 if(numero2!=0)
                 {
-                    printf("Suma: %d\n",sumarNumeros(numero1,numero2));
-                    printf("Resta: %d\n",restarNumeros(numero1,numero2));
-                    printf("Division: %f\n",dividirNumeros((float)numero1,numero2));
-                    printf("Producto: %d\n",multiplicarNumeros(numero1,numero2));
+                    printf("Suma: %f\n",sumarNumeros(numero1,numero2));
+                    printf("Resta: %f\n",restarNumeros(numero1,numero2));
+                    printf("Division: %f\n",dividirNumeros(numero1,numero2));
+                    printf("Producto: %f\n",multiplicarNumeros(numero1,numero2));
                     printf("Factorial: %d\n",calcularFactorial(numero1));
                 }
                 else
                 {
-                    printf("Suma: %d\n",sumarNumeros(numero1,numero2));
-                    printf("Resta: %d\n",restarNumeros(numero1,numero2));
-                    printf("Producto: %d\n",multiplicarNumeros(numero1,numero2));
+                    printf("Suma: %f\n",sumarNumeros(numero1,numero2));
+                    printf("Resta: %f\n",restarNumeros(numero1,numero2));
+                    printf("Producto: %f\n",multiplicarNumeros(numero1,numero2));
                     printf("Factorial: %d\n",calcularFactorial(numero1));
                     printf("No existe la division por 0.\n\n");
 
@@ -111,7 +99,7 @@ int main()
             printf("Pulse enter para continuar");
             getchar();
             while(getchar() != '\n');
-            system("clear");
+            system("cls");
 
         }
         else

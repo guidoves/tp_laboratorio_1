@@ -10,7 +10,8 @@ float restarNumeros(float,float);
 float dividirNumeros(float,float);
 float multiplicarNumeros(float,float);
 int calcularFactorial(int);
-int menu();
+int menu(char texto[],int,int);
+float ingresarNumero(char mensaje[]);
 
 
 

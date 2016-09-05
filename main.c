@@ -1,7 +1,7 @@
 /********************************************************
 *Programa: Trabajo practico 1
 *
-*Objetivo: Hacer una calculadora segun las indicaciones.
+*Objetivo: Hacer una calculadora.
 *
 *Versión: 0.1 27 de agosto del 2016.
 *Autor: Guido Vespignani.
@@ -24,26 +24,25 @@ int main()
     while(seguir=='s')
     {
 
-        switch(menu())
+        switch(menu("1- Ingresar 1er operando (A=x)\n2- Ingresar 2do operando (B=y)\n3- Calcular la suma (A+B)\n4- Calcular la resta (A-B)\n5- Calcular la division (A/B)\n6- Calcular la multiplicacion (A*B)\n7- Calcular el factorial (A!)\n8- Calcular todas las operaciones\n9- Salir\nOpcion: ",1,9))
         {
             case 1:
-            printf("Ingrese el 1er operando: ");
-            scanf("%f",&numero1);
+            numero1=ingresarNumero("Ingrese el 1er operando: ");
 
                 break;
 
             case 2:
-            printf("Ingrese el 2do operando: ");
-            scanf("%f",&numero2);
+            numero2=ingresarNumero("Ingrese el 2do operando: ");
 
                 break;
+
             case 3:
             printf("Resultado: %f\n",sumarNumeros(numero1,numero2));
 
                 break;
 
             case 4:
-            printf("Resultado: %d\n",restarNumeros(numero1,numero2));
+            printf("Resultado: %f\n",restarNumeros(numero1,numero2));
 
                 break;
 
@@ -87,31 +86,13 @@ int main()
             case 9:
                 seguir = 'n';
                 break;
-
-            default:
-                printf("Opcion invalida.");
-
-
         }
-
-        if(opcion != 9)
-        {
-            printf("Pulse enter para continuar");
-            getchar();
-            while(getchar() != '\n');
-            system("cls");
-
-        }
-        else
-        {
-
-            printf("Hasta luego!");
-            getchar();
-            while(getchar() != '\n');
-
-        }
-
-
+        printf("Presione una tecla para continuar...");
+        getchar();
+        getchar();
+        system("clear");
+        printf("1er operando: %.2f\n",numero1);
+        printf("2do operando: %.2f\n",numero2);
 
     } //fin while(seguir=='s')
     return 0;

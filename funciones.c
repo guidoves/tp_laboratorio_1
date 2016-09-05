@@ -1,8 +1,9 @@
 #include "funciones.h"
-float ingresarNumero()
+
+float ingresarNumero(char mensaje[])
 {
     float numero;
-    printf("Ingrese un numero: ");
+    printf("%s",mensaje);
     scanf("%f",&numero);
 
     return numero;
@@ -10,23 +11,38 @@ float ingresarNumero()
 
 }
 
-int menu()
+/**
+* \brief Pide un numero al usuario y lo devuelve
+* \param Recibe un mensaje para ser mostrado.
+* \return Devuelve le numero ingresado por el usuario.
+*
+*/
+
+
+
+int menu(char texto[],int opcionMin,int opcionMax)
 {
     int opcion;
-        printf("1- Ingresar 1er operando (A=%s)\n","A");
-        printf("2- Ingresar 2do operando (B=%s)\n","B");
-        printf("3- Calcular la suma (A+B)\n");
-        printf("4- Calcular la resta (A-B)\n");
-        printf("5- Calcular la division (A/B)\n");
-        printf("6- Calcular la multiplicacion (A*B)\n");
-        printf("7- Calcular el factorial (A!)\n");
-        printf("8- Calcular todas las operaciones\n");
-        printf("9- Salir\n");
-        printf("Opcion: ");
+    printf("%s",texto);
+    scanf("%d",&opcion);
+    while(opcion < opcionMin || opcion > opcionMax)
+    {
+        printf("Opcion inválida.\nIngrese: ");
         scanf("%d",&opcion);
+    }
 
-        return opcion;
+    return opcion;
 }
+
+/**
+* \brief Cumple la funcion de menu. devuelve una opcion.
+* \param texto. Pide el cuerpo del menu
+* \param opcionMin. Es el rango minimo de opcion del menu.
+* \param opcionMax. Es el rango maximo de opcion del menu.
+* \return Devuelve la opcion elegida por el usuario.
+*
+*/
+
 
 float sumarNumeros(float numero1,float numero2)
 {
@@ -37,6 +53,14 @@ float sumarNumeros(float numero1,float numero2)
     return resultado;
 }
 
+/**
+* \brief Realiza la suma de dos numeros.
+* \param Son los dos operandos.
+* \return Devuelve el resultado de la suma.
+*
+*/
+
+
 float restarNumeros(float numero1,float numero2)
 {
     float resultado;
@@ -46,6 +70,14 @@ float restarNumeros(float numero1,float numero2)
     return resultado;
 
 }
+
+/**
+* \brief Realiza la resta de dos numeros.
+* \param Son los dos operandos.
+* \return Devuelve el resultado de la resta.
+*
+*/
+
 
 float dividirNumeros(float numero1,float numero2)
 {
@@ -66,6 +98,14 @@ float dividirNumeros(float numero1,float numero2)
 
 }
 
+/**
+* \brief Realiza una division entre dos numeros
+* \param Son los operandos ( el segundo no debe ser 0.)
+* \return Devuelve el resultado de la division.
+*
+*/
+
+
 float multiplicarNumeros(float numero1,float numero2)
 {
     int resultado;
@@ -74,6 +114,14 @@ float multiplicarNumeros(float numero1,float numero2)
 
     return resultado;
 }
+
+/**
+* \brief Realiza la multiplicacion de dos numeros.
+* \param Son los dos operandos.
+* \return Devuelve el resultado de la multiplicacion.
+*
+*/
+
 
 int calcularFactorial(int numero1)
 {
@@ -88,5 +136,13 @@ int calcularFactorial(int numero1)
     }
 
     return resultado;
+
+    /**
+* \brief Realiza el factorial de un numero
+* \param Es el operando
+* \return Devuelve el factorial del numero.
+*
+*/
+
 
 }

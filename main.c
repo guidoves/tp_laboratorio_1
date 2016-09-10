@@ -57,26 +57,34 @@ int main()
                 break;
 
             case 7:
-            printf("Resultado: %d\n",calcularFactorial(numero1));
+
+            if(calcularFactorial(numero1,numero1)==-1)
+            {
+                printf("El factorial se debe calcular sobre un entero positivo.\n");
+
+                break;
+            }
+
+            printf("Resultado: %d\n",calcularFactorial(numero1,numero1));
 
                 break;
 
             case 8:
 
-                if(numero2!=0)
+                if(numero2!=0 && calcularFactorial(numero1,numero1) != -1)
                 {
                     printf("Suma: %f\n",sumarNumeros(numero1,numero2));
                     printf("Resta: %f\n",restarNumeros(numero1,numero2));
                     printf("Division: %f\n",dividirNumeros(numero1,numero2));
                     printf("Producto: %f\n",multiplicarNumeros(numero1,numero2));
-                    printf("Factorial: %d\n",calcularFactorial(numero1));
+                    printf("Factorial: %d\n",calcularFactorial(numero1,numero1));
                 }
                 else
                 {
                     printf("Suma: %f\n",sumarNumeros(numero1,numero2));
                     printf("Resta: %f\n",restarNumeros(numero1,numero2));
                     printf("Producto: %f\n",multiplicarNumeros(numero1,numero2));
-                    printf("Factorial: %d\n",calcularFactorial(numero1));
+                    printf("El factorial se debe calcular sobre un entero positivo.\n");
                     printf("No existe la division por 0.\n\n");
 
                 }

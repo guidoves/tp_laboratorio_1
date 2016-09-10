@@ -123,8 +123,18 @@ float multiplicarNumeros(float numero1,float numero2)
 */
 
 
-int calcularFactorial(int numero1)
+int calcularFactorial(int numero1, float aux)
 {
+    if(numero1 != aux)
+    {
+        return -1;
+    }
+
+    if(numero1 == 0)
+    {
+        return 1;
+    }
+
     int resultado=1;
     int factorial;
     factorial=numero1;
@@ -140,6 +150,7 @@ int calcularFactorial(int numero1)
     /**
 * \brief Realiza el factorial de un numero
 * \param Es el operando
+* \param Es un parametro auxiliar para verificar que el numero ingresado es o no de punto flotante
 * \return Devuelve el factorial del numero.
 *
 */

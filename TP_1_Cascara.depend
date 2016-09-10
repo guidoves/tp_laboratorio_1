@@ -26,3 +26,13 @@
 	<stdlib.h>
 	"funciones.h"
 
+1473476036 source:/home/guido/tp_laboratorio_1/funciones.c
+	"funciones.h"
+
+1473475738 /home/guido/tp_laboratorio_1/funciones.h
+
+1473475738 source:/home/guido/tp_laboratorio_1/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+

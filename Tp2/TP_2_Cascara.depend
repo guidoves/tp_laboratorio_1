@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1474246393 source:/home/guido/workspaceC/TP_2_Cascara/util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<math.h>
+	"util.h"
+
+1474246395 /home/guido/workspaceC/TP_2_Cascara/util.h
+
+1474308796 source:/home/guido/workspaceC/TP_2_Cascara/funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"util.h"
+
+1474301792 /home/guido/workspaceC/TP_2_Cascara/funciones.h
+
+1474310317 source:/home/guido/workspaceC/TP_2_Cascara/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"util.h"
+

@@ -25,3 +25,30 @@
 	"funciones.h"
 	"util.h"
 
+1474503890 source:/home/guido/tp_laboratorio_1/Tp2/funciones.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"funciones.h"
+	"util.h"
+
+1474503874 /home/guido/tp_laboratorio_1/Tp2/funciones.h
+
+1474412574 /home/guido/tp_laboratorio_1/Tp2/util.h
+
+1474503946 source:/home/guido/tp_laboratorio_1/Tp2/main.c
+	<stdio.h>
+	<stdlib.h>
+	"funciones.h"
+	"util.h"
+
+1474412908 source:/home/guido/tp_laboratorio_1/Tp2/util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<math.h>
+	"util.h"
+	"funciones.h"
+

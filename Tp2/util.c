@@ -4,6 +4,11 @@
 #include <ctype.h>
 #include <math.h>
 #include "util.h"
+#include "funciones.h"
+
+
+
+
 
 int validarString(char buffer[],int min,int max)
 {
@@ -36,10 +41,7 @@ int validarChar(char buffer[])
 
     if(j==1)
     {
-        if(isdigit(buffer[0])==0)
-        {
-            aux=1;
-        }
+        aux=1;
     }
 
     return aux;
@@ -53,11 +55,12 @@ int validarChar(char buffer[])
 *
 */
 
-int validarInt(char buffer[])
+int validarInt(char buffer[],int min,int max)
 {
     int aux=1; // RETURN
     int j; // AUXILIAR
     int i=0; // AUXILIARCONTADOR
+    int numero;
 
     j=strlen(buffer); // CARGA EN AUX LA CANTIDAD DE ELEMENTOS DEL ARRAY
 
@@ -72,6 +75,16 @@ int validarInt(char buffer[])
 	      aux=0;
       }
 	}
+	if(aux==1)
+	{
+        numero=cadena_entero(buffer);
+
+        if(numero < min || numero > max)
+        {
+            aux=0;
+        }
+
+	}
 
     return aux;
 }
@@ -79,7 +92,7 @@ int validarInt(char buffer[])
 /**
 * \brief Valida si el usuario ingreso un entero positivo
 * \param Recibe como parametro una cadena de caracteres
-* \return Devuelve 0 si la cadena posee letras o signos, y devuelve 1 si la cadena posee numeros.
+* \return Devuelve 0 si la cadena posee letras o signos y no esta en el rango correcto. Devuelve 1 si la cadena posee numeros y esta dentro del rango.
 *
 */
 
@@ -111,36 +124,25 @@ int cadena_entero(char numero[])
 
 int menu(char texto[],int rangoOpcionMin,int rangoOpcionMax)
 {
-  int opcion=0,ok=0;
+  int opcion=0;
   char buffer[4000];
 
   printf("%s",texto);
   printf("Opcion: ");
   gets(buffer);
 
-
-  while (ok==0)
+  while(validarInt(buffer,rangoOpcionMin,rangoOpcionMax)!=1)
   {
-    while(validarInt(buffer)!=1)
-    {
-      printf("Opcion invalida.\nOpcion: ");
-      gets(buffer);
-    }
-
-    opcion=cadena_entero(buffer);
-
-    if(opcion >= rangoOpcionMin && opcion <= rangoOpcionMax)
-	{
-        ok=1;
-    }
-    else
-    {
-        strcpy(buffer,"xxx");
-    }
+    printf("Ingreso invalido. Ingrese opcion valida.\n");
+    printf("Opcion: ");
+    gets(buffer);
 
   }
 
+  opcion=cadena_entero(buffer);
+
   return opcion;
+
 
 }
 

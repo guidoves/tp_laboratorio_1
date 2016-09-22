@@ -3,30 +3,19 @@
 #include "funciones.h"
 #include "util.h"
 #define ITEMS 20
-
-struct Persona
- {
-
-    char nombre[ITEMS][50];
-    int edad[ITEMS];
-    int estado[ITEMS];
-    int dni[ITEMS][30];
-
-};
+#define VACIO 0
+#define ACTIVO 1
 
 
 int main()
 {
 
-    struct Persona miPersona;
-    int i,flag1=0;
+    EPersona miPersona[ITEMS];
+    int i,aux;
     char seguir='s';
 
 
-    for(i=0;i<ITEMS;i++)
-    {
-        miPersona.estado[i]=0;
-    }
+    setArray(miPersona,ITEMS,VACIO);
 
 
     while(seguir=='s')
@@ -36,57 +25,44 @@ int main()
         {
             case 1:
 
-            for(i=0;i<ITEMS;i++)
-            {
-                if(miPersona.estado[i]==0)
+                aux=obtenerEspacioLibre(miPersona,ITEMS);
+
+                if(aux != -1)
                 {
-                    if(agregarPersona(&miPersona.nombre[i],&miPersona.dni[i],&miPersona.edad[i])==0)
-                    {
-                        flag1=1;
-
-                        break;
-
-                    }
-                    else
-                    {
-                        miPersona.estado[i]=1;
-                        flag1=1;
-
-                        break;
-                    }
-
+                    agregarPersona(miPersona,aux);
                 }
-
-            }
-
-            if(flag1==0)
-            {
-                printf("No hay campos vacios para el ingreso.");
-            }
-
-            flag1=0;
+                else
+                {
+                    printf("No hay campos vacios para el ingreso.\n");
+                }
 
             break;
 
-
-
             case 2:
+
+                aux=chequearActivos(miPersona,ITEMS);
+
+                if(aux==1)
+                {
+                    ordenarListar(miPersona,ITEMS);
+                    borrarPersona(miPersona,ITEMS);
+                }
+                else
+                {
+                    printf("Todos los campos estan vacios\n");
+                }
+
                 break;
+
             case 3:
 
-                printf("NOMBRE----------DNI----------EDAD\n");
-                    for(i=0;i<ITEMS;i++)
-                    {
-                        if(miPersona.estado[i]!=0)
-                        {
-                            printf("%s----------%s----------%d\n",miPersona.nombre[i],miPersona.dni[i],miPersona.edad[i]);
-                        }
-
-
-                    }
+                ordenarListar(miPersona,ITEMS);
 
                 break;
             case 4:
+
+                graficoEdades(miPersona,ITEMS);
+
                 break;
             case 5:
                 seguir = 'n';
@@ -97,7 +73,6 @@ int main()
         printf("Precione una tecla para continuar...");
         flush_in();
         system("clear");
-
 
     }
 

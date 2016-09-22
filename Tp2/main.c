@@ -1,3 +1,19 @@
+/******************************************************************************************
+* Programa: Trabajo Practico Nº 2
+*
+*Hacer un programa que defina un array de 20 ítems de esta estructura y con un menú como el
+*siguiente:
+*1.Agregar una persona
+*2.Borrar una persona
+*3.Imprimir lista ordenada por nombre
+*4.Imprimir gráfico de edades
+*
+*Version: 0.1 19 de septiembre 2016.
+*Autor: Guido Vespignani
+*
+********************************************************************************************/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "funciones.h"

@@ -1,0 +1,6 @@
+
+Si necesita compilar en Windows debe cambiar la linea 75 del archivo main.c por esta:
+
+system("cls");
+
+Gracias.

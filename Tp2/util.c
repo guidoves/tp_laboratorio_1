@@ -131,15 +131,19 @@ int menu(char texto[],int rangoOpcionMin,int rangoOpcionMax)
   printf("Opcion: ");
   gets(buffer);
 
-  while(validarInt(buffer,rangoOpcionMin,rangoOpcionMax)!=1)
+  if(validarInt(buffer,rangoOpcionMin,rangoOpcionMax)==1)
   {
-    printf("Ingreso invalido. Ingrese opcion valida.\n");
-    printf("Opcion: ");
-    gets(buffer);
+    opcion=cadena_entero(buffer);
 
   }
+  else
+  {
+    opcion=-1;
 
-  opcion=cadena_entero(buffer);
+    printf("Opcion incorrecta.\n");
+  }
+
+
 
   return opcion;
 
@@ -148,10 +152,10 @@ int menu(char texto[],int rangoOpcionMin,int rangoOpcionMax)
 
 /**
 * \brief Funcion para crear un menu de opciones
-* \param Son los items del menu de opciones.
-* \param Define el rango minimo de opciones.
-* \param Define el rango maximo de opciones.
-* \return Devuelve la opcion elegida por el usuario.
+* \param Recibe una cadena de caracteres para mostrar los indices del menu
+* \param Recibe un int para definir la primer opcion
+* \param Recibe un int para definir la ultima opcion
+* \return Devuelve la opcion elegida por el usuario o devuelve -1 si la opcion es incorrecta.
 */
 
 

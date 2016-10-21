@@ -1,0 +1,50 @@
+# depslib dependency file v1.0
+1477024323 source:/home/guido/Downloads/TP_3_Cascara/controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"movie.h"
+	"utn.h"
+	"controller.h"
+
+1477024323 /home/guido/Downloads/TP_3_Cascara/movie.h
+
+1476926756 /home/guido/Downloads/TP_3_Cascara/utn.h
+
+1477024204 /home/guido/Downloads/TP_3_Cascara/controller.h
+	"movie.h"
+
+1477025676 source:/home/guido/Downloads/TP_3_Cascara/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"funciones.h"
+	"utn.h"
+	"controller.h"
+	"movie.h"
+
+1476926002 /home/guido/Downloads/TP_3_Cascara/funciones.h
+
+1476926637 /home/guido/Downloads/TP_3_Cascara/util.h
+
+1477025659 source:/home/guido/Downloads/TP_3_Cascara/movie.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"movie.h"
+
+1476926262 source:/home/guido/Downloads/TP_3_Cascara/util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<math.h>
+	"util.h"
+
+1476926756 source:/home/guido/Downloads/TP_3_Cascara/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+

@@ -48,3 +48,39 @@
 	<string.h>
 	"utn.h"
 
+1477029029 source:/home/guido/tp_laboratorio_1/Tp3/movie.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"movie.h"
+
+1477024323 /home/guido/tp_laboratorio_1/Tp3/movie.h
+
+1476926756 source:/home/guido/tp_laboratorio_1/Tp3/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1476926756 /home/guido/tp_laboratorio_1/Tp3/utn.h
+
+1477101128 source:/home/guido/tp_laboratorio_1/Tp3/controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"movie.h"
+	"utn.h"
+	"controller.h"
+
+1477029062 /home/guido/tp_laboratorio_1/Tp3/controller.h
+	"movie.h"
+
+1477029400 source:/home/guido/tp_laboratorio_1/Tp3/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+	"controller.h"
+	"movie.h"
+

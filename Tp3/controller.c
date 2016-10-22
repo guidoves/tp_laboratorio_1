@@ -15,14 +15,14 @@
 
 int controller_altaMovie(sMovie* pMovies, int length)
 {
-    char titulo[20];
+    char titulo[50];
     char genero[20];
     char descripcion[50];
     unsigned int duracion;
     unsigned int puntaje;
     int retorno= -1;
 
-    retorno = getValidString("Ingrese el nombre de la pelicula: ","Ingreso invalido.\n","Ingreso invalido\nIngrese hasta 20 caracteres.",titulo,20,3);
+    retorno = getValidString("Ingrese el nombre de la pelicula: ","Ingreso invalido.\n","Ingreso invalido\nIngrese hasta 50 caracteres.",titulo,50,3);
 
     if(retorno == 0)
     {
@@ -246,7 +246,7 @@ void controller_cargarArchivo(sMovie* pMovies, int length)
 void controller_guardarArchivo(sMovie* pMovie,int length)
 {
     FILE* auxFile;
-    auxFile=fopen("movie.dat","w");
+    auxFile=fopen("movie.dat","wb");
 
     if(auxFile==NULL)
     {

@@ -70,31 +70,17 @@ ArrayList* al_newArrayList(void)
 int al_add(ArrayList* pList,void* pElement)
 {
     int returnAux = -1;
-    void* auxMemory;
-    int memoryOk=1;
+    int auxMem;
 
     if(pList != NULL && pElement != NULL)
     {
-        if(pList->reservedSize == pList->size)
-        {
-            auxMemory=(void*)realloc(pList->pElements,sizeof(void*)*(pList->size+AL_INCREMENT));
-            if(auxMemory != NULL)
-            {
-                pList->pElements=auxMemory;
-                pList->reservedSize=pList->reservedSize+AL_INCREMENT;
-            }
-            else
-            {
-                memoryOk=0;
-            }
-        }
-        if(memoryOk)
+        auxMem = resizeUp(pList);
+        if(!auxMem)
         {
             pList->pElements[pList->size]=pElement;
             pList->size++;
             returnAux = 0;
         }
-
     }
     return returnAux;
 }
@@ -109,6 +95,7 @@ int al_deleteArrayList(ArrayList* pList)
     int returnAux = -1;
     if(pList != NULL)
     {
+        free(pList->pElements);
         free(pList);
         returnAux = 0;
     }
@@ -128,7 +115,6 @@ int al_len(ArrayList* pList)
     {
         returnAux=pList->size;
     }
-
     return returnAux;
 }
 
@@ -142,11 +128,10 @@ int al_len(ArrayList* pList)
 void* al_get(ArrayList* pList , int index)
 {
     void* returnAux = NULL;
-    if(pList != NULL && index > -1)
+    if(pList != NULL && index >= 0 && index < pList->size )
     {
-        returnAux = (void*)pList->pElements[index];
+        returnAux = pList->pElements[index];
     }
-
     return returnAux;
 }
 
@@ -162,15 +147,19 @@ void* al_get(ArrayList* pList , int index)
 int al_contains(ArrayList* pList, void* pElement)
 {
     int returnAux = -1;
+    int i;
     if(pList != NULL && pElement != NULL)
     {
-        if(pList->size == 0)
+        returnAux = 0;
+        for(i=0;i<pList->size;i++)
         {
-            returnAux=0;
+            if(pList->pElements[i]==pElement)
+            {
+                returnAux = 1;
+                break;
+            }
         }
-
     }
-
     return returnAux;
 }
 
@@ -186,7 +175,11 @@ int al_contains(ArrayList* pList, void* pElement)
 int al_set(ArrayList* pList, int index,void* pElement)
 {
     int returnAux = -1;
-
+    if(pList != NULL && pElement != NULL && index >= 0 && index < pList->size)
+    {
+        pList->pElements[index]=pElement;
+        returnAux=0;
+    }
     return returnAux;
 }
 
@@ -200,7 +193,10 @@ int al_set(ArrayList* pList, int index,void* pElement)
 int al_remove(ArrayList* pList,int index)
 {
     int returnAux = -1;
+    if(pList != NULL && index >= 0 && index < pList->size)
+    {
 
+    }
     return returnAux;
 }
 
@@ -214,7 +210,12 @@ int al_remove(ArrayList* pList,int index)
 int al_clear(ArrayList* pList)
 {
     int returnAux = -1;
-
+    if(pList != NULL)
+    {
+        pList->size=0;
+        pList->reservedSize=AL_INITIAL_VALUE;
+        returnAux = 0;
+    }
     return returnAux;
 }
 
@@ -259,7 +260,18 @@ int al_push(ArrayList* pList, int index, void* pElement)
 int al_indexOf(ArrayList* pList, void* pElement)
 {
     int returnAux = -1;
-
+    int i;
+    if(pList != NULL && pElement != NULL)
+    {
+        for(i=0;i<pList->size;i++)
+        {
+            if(pList->pElements==pElement)
+            {
+                returnAux = i;
+                break;
+            }
+        }
+    }
     return returnAux;
 }
 
@@ -348,9 +360,25 @@ int al_sort(ArrayList* pList, int (*pFunc)(void* ,void*), int order)
 int resizeUp(ArrayList* pList)
 {
     int returnAux = -1;
-
+    void* pAux;
+    if(pList != NULL)
+    {
+        if(pList->size == pList->reservedSize)
+        {
+            pAux=(void*)realloc(pList->pElements,sizeof(void*)*(pList->reservedSize+AL_INCREMENT));
+            if(pAux != NULL)
+            {
+                pList->pElements=pAux;
+                pList->reservedSize=pList->reservedSize+AL_INCREMENT;
+                returnAux = 0;
+            }
+        }
+        else
+        {
+            returnAux = 0;
+        }
+    }
     return returnAux;
-
 }
 
 /** \brief  Expand an array list

@@ -177,8 +177,8 @@ int al_set(ArrayList* pList, int index,void* pElement)
     int returnAux = -1;
     if(pList != NULL && pElement != NULL && index >= 0 && index < pList->size)
     {
-        pList->pElements[index]=pElement;
-        returnAux=0;
+            pList->pElements[index]=pElement;
+            returnAux=0;
     }
     return returnAux;
 }
@@ -195,7 +195,8 @@ int al_remove(ArrayList* pList,int index)
     int returnAux = -1;
     if(pList != NULL && index >= 0 && index < pList->size)
     {
-
+        contract(pList,index);
+        returnAux = 0;
     }
     return returnAux;
 }
@@ -229,7 +230,15 @@ int al_clear(ArrayList* pList)
 ArrayList* al_clone(ArrayList* pList)
 {
     ArrayList* returnAux = NULL;
-
+    int i;
+    if(pList != NULL)
+    {
+        returnAux = al_newArrayList();
+        for(i=0;i<pList->size;i++)
+        {
+            al_add(returnAux,al_get(pList,i));
+        }
+    }
     return returnAux;
 }
 
@@ -246,7 +255,16 @@ ArrayList* al_clone(ArrayList* pList)
 int al_push(ArrayList* pList, int index, void* pElement)
 {
     int returnAux = -1;
-
+    int aux;
+    if(pList != NULL && pElement != NULL && index >= 0 && index < pList->size)
+    {
+        aux = expand(pList,index);
+        if(!aux)
+        {
+            al_set(pList,index,pElement);
+            returnAux = 0;
+        }
+    }
     return returnAux;
 }
 
@@ -265,7 +283,7 @@ int al_indexOf(ArrayList* pList, void* pElement)
     {
         for(i=0;i<pList->size;i++)
         {
-            if(pList->pElements==pElement)
+            if(pList->pElements[i]==pElement)
             {
                 returnAux = i;
                 break;
@@ -284,7 +302,17 @@ int al_indexOf(ArrayList* pList, void* pElement)
 int al_isEmpty(ArrayList* pList)
 {
     int returnAux = -1;
-
+    if(pList != NULL)
+    {
+        if(pList->size==0)
+        {
+            returnAux = 1;
+        }
+        else
+        {
+            returnAux = 0;
+        }
+    }
     return returnAux;
 }
 
@@ -300,7 +328,11 @@ int al_isEmpty(ArrayList* pList)
 void* al_pop(ArrayList* pList,int index)
 {
     void* returnAux = NULL;
-
+    if(pList != NULL && index >= 0 && index < pList->size)
+    {
+        returnAux = al_get(pList,index);
+        al_remove(pList,index);
+    }
     return returnAux;
 }
 
@@ -316,7 +348,16 @@ void* al_pop(ArrayList* pList,int index)
 ArrayList* al_subList(ArrayList* pList,int from,int to)
 {
     void* returnAux = NULL;
+    int i;
 
+    if(pList != NULL && from >= 0 && from < pList->size && to > from && to < pList->size )
+    {
+        returnAux = al_newArrayList();
+        for(i=from;i<to;i++)
+        {
+            al_add(returnAux,al_get(pList,i));
+        }
+    }
     return returnAux ;
 }
 
@@ -333,7 +374,20 @@ ArrayList* al_subList(ArrayList* pList,int from,int to)
 int al_containsAll(ArrayList* pList,ArrayList* pList2)
 {
     int returnAux = -1;
-
+    int i,aux;
+    if(pList != NULL && pList2 != NULL)
+    {
+        returnAux = 1;
+        for(i=0;i<pList2->size;i++)
+        {
+            aux = al_contains(pList,al_get(pList2,i));
+            if(!aux)
+            {
+                returnAux = 0;
+                break;
+            }
+        }
+    }
     return returnAux;
 }
 
@@ -347,6 +401,11 @@ int al_containsAll(ArrayList* pList,ArrayList* pList2)
 int al_sort(ArrayList* pList, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux = -1;
+    if(pList != NULL && pFunc != NULL && (order == 0 || order == 1))
+    {
+        pFunc(&order,pList);
+        returnAux = 0;
+    }
 
     return returnAux;
 }
@@ -390,7 +449,20 @@ int resizeUp(ArrayList* pList)
 int expand(ArrayList* pList,int index)
 {
     int returnAux = -1;
-
+    int i,aux;
+    if(pList != NULL && index >= 0 && index < pList->size)
+    {
+        aux = resizeUp(pList);
+        if(!aux)
+        {
+            for(i=pList->size-1;i>index;i--)
+            {
+                pList->pElements[i+1]=pList->pElements[i];
+            }
+            pList->size++;
+            returnAux=0;
+        }
+    }
     return returnAux;
 }
 
@@ -403,6 +475,15 @@ int expand(ArrayList* pList,int index)
 int contract(ArrayList* pList,int index)
 {
     int returnAux = -1;
-
+    int i;
+    if(pList != NULL && index >= 0 && index < pList->size)
+    {
+        for(i=index;i<pList->size-1;i++)
+        {
+            pList->pElements[i]=pList->pElements[i+1];
+        }
+        pList->size--;
+        returnAux = 0;
+    }
     return returnAux;
 }
